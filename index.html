@@ -1,0 +1,382 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+		<!-- font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;  -->
+<style type="text/css">
+	body {
+		font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		font-weight:300;
+		font-size:26px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1400px;
+	}
+	
+	h1 {
+		font-size:32px;
+		font-weight:300;
+	}
+	
+	.disclaimerbox {
+		background-color: #eee;		
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px ;
+		-moz-border-radius: 10px ;
+		-webkit-border-radius: 10px ;
+	}
+	
+	a:link,a:visited
+	{
+		color: #1367a7;
+		text-decoration: none;
+	}
+	a:hover {
+		color: #208799;
+	}
+	
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+	
+	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+		15px 15px 0 0px #fff, /* The fourth layer */
+		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+		20px 20px 0 0px #fff, /* The fifth layer */
+		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+		25px 25px 0 0px #fff, /* The fifth layer */
+		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+		5px 5px 0 0px #fff, /* The second layer */
+		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+		10px 10px 0 0px #fff, /* The third layer */
+		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+	
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+	
+	hr
+	{
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+</style>
+
+<html>
+<head>
+	<title>ExPT: Synthetic Pretraining for Few-Shot Experimental Design</title>
+	<meta property="og:image" content="./resources/approach.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="ExPT: Synthetic Pretraining for Few-Shot Experimental Design" />
+	<meta property="og:description" content="ExPT: Synthetic Pretraining for Few-Shot Experimental Design" />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script> 
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span style="font-size:36px">ExPT: Synthetic Pretraining for Few-Shot Experimental Design</span>
+		<br>
+		<br>
+		<table align=center width=700px>
+			<table align=center width=650px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://tung-nd.github.io/">Tung Nguyen</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://www.linkedin.com/in/sudhanshu-agrawal/">Sudhanshu Agrawal</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://aditya-grover.github.io/">Aditya Grover</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<table align=center width=500px>
+
+				<tr>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:26px"><a href='https://arxiv.org/abs/2310.19961'>[Paper]</a></span>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:26px"><a href='https://github.com/tung-nd/ExPT'>[GitHub]</a></span><br>
+						</center>
+					</td>
+					<td align=center width=120px>
+						<center>
+							<span style="font-size:26px"><a href='https://github.com/tung-nd/ExPT'>[FILL Medium Blogpost]</a></span><br>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+	<center>
+		<span style="font-size:26px"> <i>In NeurIPS 2023</i></span>
+	</center>
+	<center>
+		<br>
+		<table align=center width=1000px>
+			<tr>
+				<td width=400px>
+					<center>
+						<img class="round" style="width:600px; height:450px" src="./resources/expt-cover.png"/>
+					</center>
+				</td>
+			</tr>
+		</table>
+
+	</center>
+
+	<hr>
+
+	<table align=center width=1000px style="font-size:20px">
+		<center><h1>Abstract</h1></center>
+		<tr>
+			<td>
+				Experimental design for optimizing black-box functions is a fundamental problem
+				in many science and engineering fields. In this problem, sample efficiency is
+				crucial due to the time, money, and safety costs of real-world design evaluations.
+				Existing approaches either rely on active data collection or access to large, labeled
+				datasets of past experiments, making them impractical in many real-world scenarios.
+				In this work, we address the more challenging yet realistic setting of few-shot
+				experimental design, where only a few labeled data points of input designs and
+				their corresponding values are available. We introduce Experiment Pretrained
+				Transformers (ExPT), a foundation model for few-shot experimental design that
+				combines unsupervised learning and in-context pretraining. In ExPT, we only
+				assume knowledge of a finite collection of unlabelled data points from the input
+				domain and pretrain a transformer neural network to optimize diverse synthetic
+				functions defined over this domain. Unsupervised pretraining allows ExPT to
+				adapt to any design task at test time in an in-context fashion by conditioning on a
+				few labeled data points from the target task and generating the candidate optima.
+				We evaluate ExPT on few-shot experimental design in challenging domains and
+				demonstrate its superior generality and performance compared to existing methods.			</td>
+		</tr>
+	</table>
+	<br>
+
+	<hr>
+
+
+	<table align=center width=1000px style="font-size:20px">
+		<center><h1>A Foundation Model for Experimental Design</h1></center>
+		<tr>
+			<td width=300px>
+				<center>
+					<img class="round" style="width:500px" src="./resources/approach.png"/>
+				</center>
+			</td>
+		</tr>
+		<br>
+		<tr> 
+			<td width=300px>
+				ExPT follows a pretraining-adaptation approach in order to create and adapt a a foundation model for experimental design. In the pretraining phase, the model is given a large unlabeled dataset. The domain of the dataset can range from robot designs to DNA sequences. This unlabeled dataset is then used to create a synthetic dataset using a novel approach that uses Gaussian Processes to scale up the pretraining. During adaptation, the model is given a few real-world designs and their corresponding values and is able to produce new and high quality designs. 
+			</td>
+		</tr>
+	</table>
+	<br> 
+
+	<hr> 
+
+	<table align=center width=1000px style="font-size:20px">
+			<center><h1>Model Architecture</h1></center>
+		<tr>
+			<td width=300px>
+				<center>
+					<img class="round" style="width:500px" src="./resources/architecture.png"/>
+				</center>
+			</td>
+		</tr>
+		<tr> 
+			<td width=300px>
+				ExPT has an encoder-decoder architecture. A transformer-based encoder takes in context points <i>(y<sub>1</sub>,x<sub>1</sub>), ... (y<sub>m</sub>, x<sub>m</sub>)</i> as well as target <i>y</i> values <i> y<sub>m+1</sub>, ... , y<sub>N</sub> </i>to produce embeddings <i>h<sub>m+1</sub>, ... , h<sub>N</sub></i>. Then a VAE decoder generates designs <i>x<sub>m+1</sub>, ... , x<sub>N</sub></i> corresponding to the target objective values. 
+			</td>
+		</tr>
+	</table>
+	<br> 
+
+	<hr> 
+
+	<center><h1>Empirical Highlights</h1></center>
+	<table align=center width=1000px>
+		<tr>
+			<td width=400px>
+				<center>
+					<img class="round" style="width:300px; height:300px" src="./resources/ant.gif"/>
+				</center>
+			</td>
+			<td width=400px>
+				<center>
+					<img class="round" style="width:300px; height:300px" src="./resources/ant_vy.gif"/>
+				</center>
+			</td>
+			<td width=400px>
+				<center>
+					<img class="round" style="width:300px; height:300px" src="./resources/ant_energy.gif"/>
+				</center>
+			</td>
+		</tr>
+		<br>
+	</table>
+
+	<table align=center>
+		<tr> 
+			<td style="width:1000px; font-size:20px">
+				<center>
+				A single pretrained ExPT foundation model can be used in a few-shot setting to generate designs for multiple independent objectives: for example, robots optimizing for horizontal speed, vertical speed while maintaining horizontal motion, and energy used while travelling.
+				</center>
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table align=center width=1000px style="font-size:20px">
+		
+		<tr> 
+			<td style="width:800px">
+				4 few-shot tasks are constructed using data from the Design-Bench benchmark. These are D'Kitty and Ant from the domain of robotics, and TFBind-8 and TFBind-10 from the domain of genetics. We consider two different scenarios consisting of 1% of the total available data. Both scenarios are few-shot settings and demonstrate the performance of the model even when the designs available are not high performing. 
+			</td>
+		</tr>
+	</table>
+	<br>
+	<table align=center width=1000px style="font-size:20px">
+
+		<tr>
+			<td style="width:200px">
+				The models are given access to the 1% worst-performing datapoints.
+			</td>
+			<td>
+				<center>
+					<img class="round" style="width:500px" src="./resources/poorest_bar_chart.png"/>
+				</center>
+			</td>
+		</tr>
+		<tr>
+			<td style="width:200px">
+				The models are given access to a random 1% subset of the datapoints.
+			</td>
+			<td >
+				<center>
+					<img class="round" style="width:500px" src="./resources/random_bar_chart.png"/>
+				</center>
+			</td>
+		</tr>
+	</table>
+	<br> 
+
+
+	Further details about these experiments as well as other experimental setups, such as synthetic tasks, multi-objective tasks, and ablation studies comparing forward and inverse modeling can be found in Section 3 of the paper.  
+
+	<hr> 
+
+
+	<table align=center width=750 style="font-size:20px">
+		<center><h1>BibTeX</h1></center>
+		<tr>
+			<td><a href=""><img class="layered-paper-big" style="height:250px" src="./resources/paper-big.png"/></a></td>
+			<td><span style="font-size:20px">Tung Nguyen, Sudhanshu Agrawal, Aditya Grover<br>
+				<b>ExPT: Synthetic Pretraining for Few-Shot Experimental Design</b><br>
+				In NeurIPS, 2023.<br>
+				<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
+				<br>
+				If you find our work useful, please consider citing us using the following BibTeX : 
+			</td>
+		</tr>
+	</table>
+	<table align=center width=600px>
+		<tr>
+			<td><span style="font-size:24px"><center>
+				<a href="./resources/bibtex.txt">[BibTeX]</a>
+			</center></td>
+		</tr>
+	</table>
+
+	<hr>
+	<br>
+
+	<table align=center width=900px style="font-size:20px">
+		<tr>
+			<td width=400px>
+				<center>
+					This website was made using a template which can be found <a href="https://github.com/richzhang/webpage-template">here</a>. 
+				</center>
+			</td>
+		</tr>
+	</table>
+
+<br>
+</body>
+</html>
+
