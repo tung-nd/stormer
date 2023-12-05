@@ -118,10 +118,10 @@
 
 <html>
 <head>
-	<title>ExPT: Synthetic Pretraining for Few-Shot Experimental Design</title>
-	<meta property="og:image" content="./resources/approach.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
-	<meta property="og:title" content="ExPT: Synthetic Pretraining for Few-Shot Experimental Design" />
-	<meta property="og:description" content="ExPT: Synthetic Pretraining for Few-Shot Experimental Design" />
+	<title>WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting</title>
+	<meta property="og:image" content="./resources/cover.pdf"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting" />
+	<meta property="og:description" content="WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting" />
 
 	<!-- Get from Google Analytics -->
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -138,11 +138,11 @@
 <body>
 	<br>
 	<center>
-		<span style="font-size:36px">ExPT: Synthetic Pretraining for Few-Shot Experimental Design</span>
+		<span style="font-size:36px">WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting</span>
 		<br>
 		<br>
-		<table align=center width=700px>
-			<table align=center width=650px>
+		<table align=center width=1500px>
+			<table align=center width=1200px>
 				<tr>
 					<td align=center width=100px>
 						<center>
@@ -151,7 +151,38 @@
 					</td>
 					<td align=center width=100px>
 						<center>
-							<span style="font-size:26px"><a href="https://www.linkedin.com/in/sudhanshu-agrawal/">Sudhanshu Agrawal</a></span>
+							<span style="font-size:26px"><a href="https://www.linkedin.com/in/rohan-shah13/">Rohan Shah</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://sites.google.com/view/hbansal">Hritik Bansal</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://scholar.google.com/citations?user=SBeD6doAAAAJ&hl=en">Troy Arcomano</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://www.anl.gov/profile/sandeep-r-madireddy">Sandeep Madireddy</a></span>
+						</center>
+					</td>
+					<!-- <br></tr> -->
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://romit-maulik.github.io/">Romit Maulik</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://www.anl.gov/profile/rao-kotamarthi">Veerabhadra Kotamarthi</a></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:26px"><a href="https://cs.uchicago.edu/people/ian-foster/">Ian <br> Foster</a></span>
 						</center>
 					</td>
 					<td align=center width=100px>
@@ -185,7 +216,7 @@
 		</table>
 	</center>
 	<center>
-		<span style="font-size:26px"> <i>In NeurIPS 2023</i></span>
+		<span style="font-size:26px"> <i>Preprint</i></span>
 	</center>
 	<center>
 		<br>
@@ -207,23 +238,24 @@
 		<center><h1>Abstract</h1></center>
 		<tr>
 			<td>
-				Experimental design for optimizing black-box functions is a fundamental problem
-				in many science and engineering fields. In this problem, sample efficiency is
-				crucial due to the time, money, and safety costs of real-world design evaluations.
-				Existing approaches either rely on active data collection or access to large, labeled
-				datasets of past experiments, making them impractical in many real-world scenarios.
-				In this work, we address the more challenging yet realistic setting of few-shot
-				experimental design, where only a few labeled data points of input designs and
-				their corresponding values are available. We introduce Experiment Pretrained
-				Transformers (ExPT), a foundation model for few-shot experimental design that
-				combines unsupervised learning and in-context pretraining. In ExPT, we only
-				assume knowledge of a finite collection of unlabelled data points from the input
-				domain and pretrain a transformer neural network to optimize diverse synthetic
-				functions defined over this domain. Unsupervised pretraining allows ExPT to
-				adapt to any design task at test time in an in-context fashion by conditioning on a
-				few labeled data points from the target task and generating the candidate optima.
-				We evaluate ExPT on few-shot experimental design in challenging domains and
-				demonstrate its superior generality and performance compared to existing methods.			</td>
+				Weather forecasting is a fundamental problem for anticipating and mitigating the impacts
+				of climate change. Recently, data-driven approaches for weather forecasting based on deep
+				learning have shown great promise, achieving accuracies that are competitive with operational
+				systems. However, those methods often employ complex, customized architectures without
+				sufficient ablation analysis, making it difficult to understand what truly contributes to their
+				success. Here we introduce WeaNet, a simple transformer model that achieves state-of-the-
+				art performance on weather forecasting with minimal changes to the standard transformer
+				backbone. We identify the key components of WeaNet through careful empirical analyses,
+				including weather-specific embedding, randomized dynamics forecast, and pressure-weighted
+				loss. At the core of WeaNet is a randomized forecasting objective that trains the model to
+				forecast the weather dynamics over varying time intervals. During inference, this allows us to
+				produce multiple forecasts for a target lead time and combine them to obtain better forecast
+				accuracy. On WeatherBench 2, WeaNet performs competitively at short to medium-range
+				forecasts and outperforms current methods beyond 7 days, while requiring orders-of-magnitude
+				less training data and compute. Additionally, we demonstrate WeaNet’s favorable scaling
+				properties, showing consistent improvements in forecast accuracy with increases in model size
+				and training tokens. Code and checkpoints will be made available.
+			</td>
 		</tr>
 	</table>
 	<br>
@@ -232,7 +264,7 @@
 
 
 	<table align=center width=1000px style="font-size:20px">
-		<center><h1>A Foundation Model for Experimental Design</h1></center>
+		<center><h1>Reliable Weather Forecasts Via Randomized Iterative Forecasting</h1></center>
 		<tr>
 			<td width=300px>
 				<center>
@@ -243,7 +275,12 @@
 		<br>
 		<tr> 
 			<td width=300px>
-				ExPT follows a pretraining-adaptation approach in order to create and adapt a a foundation model for experimental design. In the pretraining phase, the model is given a large unlabeled dataset. The domain of the dataset can range from robot designs to DNA sequences. This unlabeled dataset is then used to create a synthetic dataset using a novel approach that uses Gaussian Processes to scale up the pretraining. During adaptation, the model is given a few real-world designs and their corresponding values and is able to produce new and high quality designs. 
+				The key innovation of WeaNet is a randomized forecasting objective that trains the model to forecast the weather dynamics over varying time intervals of 6, 12, and 24 hours.
+				The 6 and 12-hour values help to encourage the model to learn and resolve the
+				diurnal cycle (day-night cycle), one of the most important oscillations in the atmosphere driving short-term
+				dynamics, while the 24-hour value filters the effects of the diurnal cycle and allows the model to learn longer, synoptic-scale dynamics.
+				This objective enables a single model, once trained, to generate various forecasts for a specified lead time 𝑇 and combine them to obtain better forecast
+				accuracy.
 			</td>
 		</tr>
 	</table>
@@ -256,13 +293,17 @@
 		<tr>
 			<td width=300px>
 				<center>
-					<img class="round" style="width:500px" src="./resources/architecture.png"/>
+					<img class="round" style="width:500px" src="./resources/arc.png"/>
 				</center>
 			</td>
 		</tr>
 		<tr> 
 			<td width=300px>
-				ExPT has an encoder-decoder architecture. A transformer-based encoder takes in context points <i>(y<sub>1</sub>,x<sub>1</sub>), ... (y<sub>m</sub>, x<sub>m</sub>)</i> as well as target <i>y</i> values <i> y<sub>m+1</sub>, ... , y<sub>N</sub> </i>to produce embeddings <i>h<sub>m+1</sub>, ... , h<sub>N</sub></i>. Then a VAE decoder generates designs <i>x<sub>m+1</sub>, ... , x<sub>N</sub></i> corresponding to the target objective values. 
+				<!-- ExPT has an encoder-decoder architecture. A transformer-based encoder takes in context points <i>(y<sub>1</sub>,x<sub>1</sub>), ... (y<sub>m</sub>, x<sub>m</sub>)</i> as well as target <i>y</i> values <i> y<sub>m+1</sub>, ... , y<sub>N</sub> </i>to produce embeddings <i>h<sub>m+1</sub>, ... , h<sub>N</sub></i>. Then a VAE decoder generates designs <i>x<sub>m+1</sub>, ... , x<sub>N</sub></i> corresponding to the target objective values.  -->
+				WeaNet architecture consists of two components, a weather-specific embedding and the WeaNet backbone. 
+				The weather-specific embedding module embeds the input <i>𝑋<sub>0</sub> ∈ R<sup>𝑉×𝐻×W</sup></i> to a sequence of <i>(H/p) × (W/p)</i> tokens, while modeling the non-linear interactions between climate variables in the input.
+				The tokens are fed to the WeaNet backbone together with the time interval embedding 𝛿𝑡, and finally go through a linear and reshape module to produce the dynamics forecast.
+				Each WeaNet block employs adaptive layer normalization to condition on 𝛿𝑡. 
 			</td>
 		</tr>
 	</table>
@@ -271,14 +312,20 @@
 	<hr> 
 
 	<center><h1>Empirical Highlights</h1></center>
-	<table align=center width=1000px>
+	<table align=center width=1500px>
+		
 		<tr>
-			<td width=400px>
+			<td width=700px>
 				<center>
-					<img class="round" style="width:300px; height:300px" src="./resources/ant.gif"/>
+					<img class="round" style="width:600px" src="./resources/main_rmse.pdf"/>
 				</center>
 			</td>
-			<td width=400px>
+			<td width=700px>
+				<center>
+					<img class="round" style="width:600px" src="./resources/main_rmse.pdf"/>
+				</center>
+			</td>
+			<!-- <td width=400px>
 				<center>
 					<img class="round" style="width:300px; height:300px" src="./resources/ant_vy.gif"/>
 				</center>
@@ -287,12 +334,12 @@
 				<center>
 					<img class="round" style="width:300px; height:300px" src="./resources/ant_energy.gif"/>
 				</center>
-			</td>
+			</td> -->
 		</tr>
 		<br>
 	</table>
 
-	<table align=center>
+	<!-- <table align=center>
 		<tr> 
 			<td style="width:1000px; font-size:20px">
 				<center>
@@ -300,8 +347,8 @@
 				</center>
 			</td>
 		</tr>
-	</table>
-	<br>
+	</table> -->
+	<!-- <br>
 	<table align=center width=1000px style="font-size:20px">
 		
 		<tr> 
@@ -333,7 +380,7 @@
 				</center>
 			</td>
 		</tr>
-	</table>
+	</table> -->
 	<br> 
 
 
