@@ -118,10 +118,10 @@
 
 <html>
 <head>
-	<title>WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting</title>
+	<title>Scaling transformer neural networks for skillful and reliable medium-range weather forecasting</title>
 	<meta property="og:image" content="./resources/cover.pdf"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
-	<meta property="og:title" content="WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting" />
-	<meta property="og:description" content="WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting" />
+	<meta property="og:title" content="Scaling transformer neural networks for skillful and reliable medium-range weather forecasting" />
+	<meta property="og:description" content="Scaling transformer neural networks for skillful and reliable medium-range weather forecasting" />
 
 	<!-- Get from Google Analytics -->
 	<!-- Global site tag (gtag.js) - Google Analytics -->
@@ -138,7 +138,7 @@
 <body>
 	<br>
 	<center>
-		<span style="font-size:36px">WeaNet: Simple and Scalable Transformers for State-of-the-art Weather Forecasting</span>
+		<span style="font-size:36px">Scaling transformer neural networks for <br> skillful and reliable medium-range weather forecasting</span>
 		<br>
 		<br>
 		<table align=center width=1500px>
@@ -198,17 +198,17 @@
 				<tr>
 					<td align=center width=120px>
 						<center>
-							<span style="font-size:26px"><a href='https://tung-nd.github.io/weanet/'>[Paper]</a></span>
+							<span style="font-size:26px"><a href='https://tung-nd.github.io/Stormer/'>[Paper]</a></span>
 						</center>
 					</td>
 					<td align=center width=120px>
 						<center>
-							<span style="font-size:26px"><a href='https://github.com/tung-nd/weanet'>[GitHub]</a></span><br>
+							<span style="font-size:26px"><a href='https://github.com/tung-nd/Stormer'>[GitHub]</a></span><br>
 						</center>
 					</td>
 					<td align=center width=120px>
 						<center>
-							<span style="font-size:26px"><a href='https://tung-nd.github.io/weanet/'>[Demo]</a></span><br>
+							<span style="font-size:26px"><a href='https://tung-nd.github.io/Stormer/'>[Demo]</a></span><br>
 						</center>
 					</td>
 				</tr>
@@ -233,8 +233,8 @@
 			<td style="text-align: justify;">
 				Illustration of an example 5-day forecast of near-surface wind speed (color-fill) and mean sea level
 				pressure (contours). On December 31, 2020, an extratropical cyclone impacted Alaska setting a new North
-				Pacific low-pressure record. Here, we evaluate the ability of WeaNet to predict this record-breaking event 5
-				days in advance. Using initial conditions from 0000 UTC, 26 December 2011, WeaNet was able to successfully
+				Pacific low-pressure record. Here, we evaluate the ability of Stormer to predict this record-breaking event 5
+				days in advance. Using initial conditions from 0000 UTC, 26 December 2011, Stormer was able to successfully
 				forecast both the location and strength of this extreme event with great accuracy.
 			</td>
 		</table>
@@ -252,16 +252,16 @@
 				learning have shown great promise, achieving accuracies that are competitive with operational
 				systems. However, those methods often employ complex, customized architectures without
 				sufficient ablation analysis, making it difficult to understand what truly contributes to their
-				success. Here we introduce WeaNet, a simple transformer model that achieves state-of-the-
+				success. Here we introduce Stormer, a simple transformer model that achieves state-of-the-
 				art performance on weather forecasting with minimal changes to the standard transformer
-				backbone. We identify the key components of WeaNet through careful empirical analyses,
+				backbone. We identify the key components of Stormer through careful empirical analyses,
 				including weather-specific embedding, randomized dynamics forecast, and pressure-weighted
-				loss. At the core of WeaNet is a randomized forecasting objective that trains the model to
+				loss. At the core of Stormer is a randomized forecasting objective that trains the model to
 				forecast the weather dynamics over varying time intervals. During inference, this allows us to
 				produce multiple forecasts for a target lead time and combine them to obtain better forecast
-				accuracy. On WeatherBench 2, WeaNet performs competitively at short to medium-range
+				accuracy. On WeatherBench 2, Stormer performs competitively at short to medium-range
 				forecasts and outperforms current methods beyond 7 days, while requiring orders-of-magnitude
-				less training data and compute. Additionally, we demonstrate WeaNet’s favorable scaling
+				less training data and compute. Additionally, we demonstrate Stormer’s favorable scaling
 				properties, showing consistent improvements in forecast accuracy with increases in model size
 				and training tokens. Code and checkpoints will be made available.
 			</td>
@@ -284,7 +284,7 @@
 		<!-- <br> -->
 		<tr> 
 			<td width=300px style="text-align: justify;">
-				The key innovation of WeaNet is a randomized forecasting objective that trains the model to forecast the weather dynamics over varying time intervals of 6, 12, and 24 hours.
+				The key innovation of Stormer is a randomized forecasting objective that trains the model to forecast the weather dynamics over varying time intervals of 6, 12, and 24 hours.
 				The 6 and 12-hour values help to encourage the model to learn and resolve the
 				diurnal cycle (day-night cycle), one of the most important oscillations in the atmosphere driving short-term
 				dynamics, while the 24-hour value filters the effects of the diurnal cycle and allows the model to learn longer, synoptic-scale dynamics.
@@ -310,10 +310,10 @@
 		<tr> 
 			<td width=300px style="text-align: justify;">
 				<!-- ExPT has an encoder-decoder architecture. A transformer-based encoder takes in context points <i>(y<sub>1</sub>,x<sub>1</sub>), ... (y<sub>m</sub>, x<sub>m</sub>)</i> as well as target <i>y</i> values <i> y<sub>m+1</sub>, ... , y<sub>N</sub> </i>to produce embeddings <i>h<sub>m+1</sub>, ... , h<sub>N</sub></i>. Then a VAE decoder generates designs <i>x<sub>m+1</sub>, ... , x<sub>N</sub></i> corresponding to the target objective values.  -->
-				WeaNet architecture consists of two components, a weather-specific embedding and the WeaNet backbone. 
+				Stormer architecture consists of two components, a weather-specific embedding and the Stormer backbone. 
 				The weather-specific embedding module embeds the input <i>𝑋<sub>0</sub> ∈ R<sup>𝑉×𝐻×W</sup></i> to a sequence of <i>(H/p) × (W/p)</i> tokens, while modeling the non-linear interactions between climate variables in the input.
-				The tokens are fed to the WeaNet backbone together with the time interval embedding 𝛿𝑡, and finally go through a linear and reshape module to produce the dynamics forecast.
-				Each WeaNet block employs adaptive layer normalization to condition on 𝛿𝑡. 
+				The tokens are fed to the Stormer backbone together with the time interval embedding 𝛿𝑡, and finally go through a linear and reshape module to produce the dynamics forecast.
+				Each Stormer block employs adaptive layer normalization to condition on 𝛿𝑡. 
 			</td>
 		</tr>
 	</table>
@@ -325,11 +325,10 @@
 	<table align=center width=1000px style="font-size:20px">
 		<tr> 
 			<td width=300px style="text-align: justify;">
-				We evaluate the performance of WeaNet on Weatherbench 2 using RMSE (top) and ACC (bottom) metrics. For short-range, 1–5 day forecasts, WeaNet accuracy is on par with Pangu-Weather and GraphCast. 
-				At longer lead times, WeaNet excels, consistently outperforming both Pangu-Weather and
-				GraphCast from day 6 onwards by a large margin. Moreover, the performance gap increases as we increase
-				the lead time. At 14 day forecasts, WeaNet performs better than GraphCast by 10% − 20% across all 9 key
-				variables.
+				We evaluate the performance of Stormer on Weatherbench 2 using RMSE (top) and ACC (bottom) metrics. For short-range, 1–5 day forecasts, Stormer accuracy is on par with Pangu-Weather and GraphCast. 
+				At longer lead times, Stormer excels, consistently outperforming both baseline methods from day 6 onwards by a large margin. Moreover, the performance gap increases as we increase
+				the lead time. At 14 day forecasts, Stormer performs better than GraphCast by 10% − 20% across all 9 key variables.
+				Stormer is also the only model in this comparison that performs better than Climatology at long lead times, while other methods approach or even do worse than this simple baseline.
 			</td>
 		</tr>
 		<tr style="height: 15px;">
@@ -342,10 +341,24 @@
 				</center>
 			</td>
 		</tr>
+		<tr> 
+			<td width=300px style="text-align: center; font-size:20px">
+				Comparison with the deep learning baselines on Root Mean Squared Error (RMSE) metric. Lower RMSE is better.
+			</td>
+		</tr>
+		<tr style="height: 40px;">
+			<td></td>
+		</tr>
+		<tr>
 			<td width=1000px>
 				<center>
 					<img style="width:1000px; height:auto;" src="./resources/main_acc.jpg"/>
 				</center>
+			</td>
+		</tr>
+		<tr> 
+			<td width=300px style="text-align: center; font-size:20px">
+				Comparison with the deep learning baselines on Anomaly Correlation Coefficient (ACC) metric. Higher ACC is better.
 			</td>
 		</tr>
 	</table>
@@ -361,13 +374,13 @@
 	<table align=center width=750 style="font-size:20px">
 		<center><h1>BibTeX</h1></center>
 		<tr>
-			<td><a href=""><img class="layered-paper-big" style="height:250px" src="./resources/paper-big.png"/></a></td>
-			<td><span style="font-size:20px">Tung Nguyen, Sudhanshu Agrawal, Aditya Grover<br>
-				<b>ExPT: Synthetic Pretraining for Few-Shot Experimental Design</b><br>
-				In NeurIPS, 2023.<br>
+			<td><a href=""><img class="layered-paper-big" style="height:250px" src="./resources/first_page.jpg"/></a></td>
+			<td><span style="font-size:20px">Tung Nguyen, Rohan Shah, Hritik Bansal, Troy Arcomano, Sandeep Madireddy, Romit Maulik, Veerabhadra Kotamarthi, Ian Foster, Aditya Grover<br>
+				<b>Scaling transformer neural networks for <br> skillful and reliable medium-range weather forecasting</b><br>
+				Preprint, 2023.<br>
 				<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
 				<br>
-				If you find our work useful, please consider citing us using the following BibTeX : 
+				If you find our work useful, please consider citing us using the following BibTeX: 
 			</td>
 		</tr>
 	</table>
