@@ -198,17 +198,17 @@
 				<tr>
 					<td align=center width=120px>
 						<center>
-							<span style="font-size:26px"><a href='https://arxiv.org/abs/2310.19961'>[Paper]</a></span>
+							<span style="font-size:26px"><a href='https://tung-nd.github.io/weanet/'>[Paper]</a></span>
 						</center>
 					</td>
 					<td align=center width=120px>
 						<center>
-							<span style="font-size:26px"><a href='https://github.com/tung-nd/ExPT'>[GitHub]</a></span><br>
+							<span style="font-size:26px"><a href='https://github.com/tung-nd/weanet'>[GitHub]</a></span><br>
 						</center>
 					</td>
 					<td align=center width=120px>
 						<center>
-							<span style="font-size:26px"><a href='https://github.com/tung-nd/ExPT'>[FILL Medium Blogpost]</a></span><br>
+							<span style="font-size:26px"><a href='https://tung-nd.github.io/weanet/'>[Demo]</a></span><br>
 						</center>
 					</td>
 				</tr>
@@ -220,15 +220,23 @@
 	</center>
 	<center>
 		<br>
-		<table align=center width=1000px>
+		<table align=center width=1000px style="font-size:20px">
 			<tr>
 				<td width=400px>
 					<center>
-						<img style="width:1000px; height:auto;" src="./resources/cover.jpg"/>
+						<img style="width:1000px; height:auto; margin-bottom: 15px;" src="./resources/cover.jpg"/>
 						<!-- <object type="application/pdf" data="./resources/cover.jpg" width="1000px"></object> -->
 					</center>
 				</td>
 			</tr>
+			<br>
+			<td style="text-align: justify;">
+				Illustration of an example 5-day forecast of near-surface wind speed (color-fill) and mean sea level
+				pressure (contours). On December 31, 2020, an extratropical cyclone impacted Alaska setting a new North
+				Pacific low-pressure record. Here, we evaluate the ability of WeaNet to predict this record-breaking event 5
+				days in advance. Using initial conditions from 0000 UTC, 26 December 2011, WeaNet was able to successfully
+				forecast both the location and strength of this extreme event with great accuracy.
+			</td>
 		</table>
 
 	</center>
@@ -238,7 +246,7 @@
 	<table align=center width=1000px style="font-size:20px">
 		<center><h1>Abstract</h1></center>
 		<tr>
-			<td>
+			<td style="text-align: justify;">
 				Weather forecasting is a fundamental problem for anticipating and mitigating the impacts
 				of climate change. Recently, data-driven approaches for weather forecasting based on deep
 				learning have shown great promise, achieving accuracies that are competitive with operational
@@ -269,13 +277,13 @@
 		<tr>
 			<td width=300px>
 				<center>
-					<img class="round" style="width:600px" src="./resources/approach.png"/>
+					<img class="round" style="width:600px; margin-bottom: 15px;" src="./resources/approach.png"/>
 				</center>
 			</td>
 		</tr>
-		<br>
+		<!-- <br> -->
 		<tr> 
-			<td width=300px>
+			<td width=300px style="text-align: justify;">
 				The key innovation of WeaNet is a randomized forecasting objective that trains the model to forecast the weather dynamics over varying time intervals of 6, 12, and 24 hours.
 				The 6 and 12-hour values help to encourage the model to learn and resolve the
 				diurnal cycle (day-night cycle), one of the most important oscillations in the atmosphere driving short-term
@@ -294,12 +302,13 @@
 		<tr>
 			<td width=300px>
 				<center>
-					<img class="round" style="width:700px" src="./resources/arc.png"/>
+					<img class="round" style="width:700px; margin-bottom: 15px;" src="./resources/arc.png"/>
 				</center>
 			</td>
 		</tr>
+		<!-- <br> -->
 		<tr> 
-			<td width=300px>
+			<td width=300px style="text-align: justify;">
 				<!-- ExPT has an encoder-decoder architecture. A transformer-based encoder takes in context points <i>(y<sub>1</sub>,x<sub>1</sub>), ... (y<sub>m</sub>, x<sub>m</sub>)</i> as well as target <i>y</i> values <i> y<sub>m+1</sub>, ... , y<sub>N</sub> </i>to produce embeddings <i>h<sub>m+1</sub>, ... , h<sub>N</sub></i>. Then a VAE decoder generates designs <i>x<sub>m+1</sub>, ... , x<sub>N</sub></i> corresponding to the target objective values.  -->
 				WeaNet architecture consists of two components, a weather-specific embedding and the WeaNet backbone. 
 				The weather-specific embedding module embeds the input <i>𝑋<sub>0</sub> ∈ R<sup>𝑉×𝐻×W</sup></i> to a sequence of <i>(H/p) × (W/p)</i> tokens, while modeling the non-linear interactions between climate variables in the input.
@@ -313,72 +322,38 @@
 	<hr> 
 
 	<center><h1>Empirical Highlights</h1></center>
-	<table align=center width=1000px>
-		
+	<table align=center width=1000px style="font-size:20px">
+		<tr> 
+			<td width=300px style="text-align: justify;">
+				We evaluate the performance of WeaNet on Weatherbench 2 using RMSE (top) and ACC (bottom) metrics. For short-range, 1–5 day forecasts, WeaNet accuracy is on par with Pangu-Weather and GraphCast. 
+				At longer lead times, WeaNet excels, consistently outperforming both Pangu-Weather and
+				GraphCast from day 6 onwards by a large margin. Moreover, the performance gap increases as we increase
+				the lead time. At 14 day forecasts, WeaNet performs better than GraphCast by 10% − 20% across all 9 key
+				variables.
+			</td>
+		</tr>
+		<tr style="height: 15px;">
+			<td></td>
+		</tr>
 		<tr>
 			<td width=1000px>
 				<center>
 					<img style="width:1000px; height:auto;" src="./resources/main_rmse.jpg"/>
-					<!-- <object type="application/pdf" data="./resources/main_rmse.jpg" width="700px"></object> -->
 				</center>
 			</td>
 		</tr>
 			<td width=1000px>
 				<center>
 					<img style="width:1000px; height:auto;" src="./resources/main_acc.jpg"/>
-					<!-- <object type="application/pdf" data="./resources/main_acc.jpg" width="700px"></object> -->
 				</center>
-			</td>
-		</tr>
-		<br>
-	</table>
-
-	<!-- <table align=center>
-		<tr> 
-			<td style="width:1000px; font-size:20px">
-				<center>
-				A single pretrained ExPT foundation model can be used in a few-shot setting to generate designs for multiple independent objectives: for example, robots optimizing for horizontal speed, vertical speed while maintaining horizontal motion, and energy used while travelling.
-				</center>
-			</td>
-		</tr>
-	</table> -->
-	<!-- <br>
-	<table align=center width=1000px style="font-size:20px">
-		
-		<tr> 
-			<td style="width:800px">
-				4 few-shot tasks are constructed using data from the Design-Bench benchmark. These are D'Kitty and Ant from the domain of robotics, and TFBind-8 and TFBind-10 from the domain of genetics. We consider two different scenarios consisting of 1% of the total available data. Both scenarios are few-shot settings and demonstrate the performance of the model even when the designs available are not high performing. 
 			</td>
 		</tr>
 	</table>
-	<br>
-	<table align=center width=1000px style="font-size:20px">
-
-		<tr>
-			<td style="width:200px">
-				The models are given access to the 1% worst-performing datapoints.
-			</td>
-			<td>
-				<center>
-					<img class="round" style="width:500px" src="./resources/poorest_bar_chart.png"/>
-				</center>
-			</td>
-		</tr>
-		<tr>
-			<td style="width:200px">
-				The models are given access to a random 1% subset of the datapoints.
-			</td>
-			<td >
-				<center>
-					<img class="round" style="width:500px" src="./resources/random_bar_chart.png"/>
-				</center>
-			</td>
-		</tr>
-	</table> -->
-	<br> 
+	
+	<!-- <br>  -->
 
 
-	Further details about these experiments as well as other experimental setups, such as synthetic tasks, multi-objective tasks, and ablation studies comparing forward and inverse modeling can be found in Section 3 of the paper.  
+	<!-- Further details about these experiments as well as other experimental setups, such as synthetic tasks, multi-objective tasks, and ablation studies comparing forward and inverse modeling can be found in Section 3 of the paper.   -->
 
 	<hr> 
 
