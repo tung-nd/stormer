@@ -4,7 +4,7 @@
 
 <b> Preprint </b>
 
-<b> ArXiv </b> : []()
+<b> ArXiv </b> : [https://arxiv.org/abs/2312.03876](https://arxiv.org/abs/2312.03876)
 
 <b> GitHub </b> : [https://github.com/tung-nd/stormer](https://github.com/tung-nd/stormer)
 
