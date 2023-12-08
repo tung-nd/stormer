@@ -1,8 +1,8 @@
-@misc{nguyen2023expt,
-      title={ExPT: Synthetic Pretraining for Few-Shot Experimental Design}, 
-      author={Tung Nguyen and Sudhanshu Agrawal and Aditya Grover},
+@misc{nguyen2023scaling,
+      title={Scaling transformer neural networks for skillful and reliable medium-range weather forecasting}, 
+      author={Tung Nguyen and Rohan Shah and Hritik Bansal and Troy Arcomano and Sandeep Madireddy and Romit Maulik and Veerabhadra Kotamarthi and Ian Foster and Aditya Grover},
       year={2023},
-      eprint={2310.19961},
+      eprint={2312.03876},
       archivePrefix={arXiv},
-      primaryClass={cs.LG}
+      primaryClass={physics.ao-ph}
 }
