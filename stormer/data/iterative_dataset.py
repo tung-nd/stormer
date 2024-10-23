@@ -90,9 +90,10 @@ class ERA5MultiStepRandomizedDataset(Dataset):
             outs.append(out)
             last_out = out
         
+        inp_data = torch.from_numpy(inp_data)
         diffs = torch.stack(diffs, dim=0)
-        out_transform_mean = self.out_transform_dict[chosen_interval].mean
-        out_transform_std = self.out_transform_dict[chosen_interval].std
+        out_transform_mean = torch.from_numpy(self.out_transform_dict[chosen_interval].mean)
+        out_transform_std = torch.from_numpy(self.out_transform_dict[chosen_interval].std)
         list_intervals = np.array([chosen_interval] * self.steps)
         list_intervals = torch.from_numpy(list_intervals).to(dtype=inp_data.dtype) / 10.0
         
