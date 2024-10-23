@@ -140,7 +140,7 @@ python train.py \
 ```
 
 ## Inference
-`inference.py` shows an example of loading a pretrained model and running inference on a sample data point.
+`inference.py` shows an example of loading a pretrained model and running inference on a sample data point. We provide two checkpoints of Stormer, a checkpoint with a patch size of 2 [here](https://huggingface.co/tungnd/stormer/resolve/main/stormer_1.40625_patch_size_2.ckpt) and the other with a patch size of 4 [here](https://huggingface.co/tungnd/stormer/resolve/main/stormer_1.40625_patch_size_4.ckpt).
 
 ## Citation
 
