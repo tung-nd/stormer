@@ -99,16 +99,24 @@ normalize_mean = dict(np.load(os.path.join(root_dir, "normalize_mean.npz")))
 normalize_mean = np.concatenate([normalize_mean[v] for v in variables], axis=0)
 normalize_std = dict(np.load(os.path.join(root_dir, "normalize_std.npz")))
 normalize_std = np.concatenate([normalize_std[v] for v in variables], axis=0)
+inp_transform = transforms.Normalize(normalize_mean, normalize_std)
 dataset = ERA5MultiLeadtimeDataset(
     root_dir=os.path.join(root_dir, 'test'),
     variables=variables,
-    transform=transforms.Normalize(normalize_mean, normalize_std),
+    transform=inp_transform,
     list_lead_times=[24, 72, 120, 168],  # 1, 3, 5, 7 days
     data_freq=6,
 )
 inp_data, out_data_dict, _ = dataset[0]
 inp_data = inp_data.unsqueeze(0).to(device)
 out_data_dict = {k: v.unsqueeze(0).to(device) for k, v in out_data_dict.items()}
+
+out_transforms = {}
+for l in [6, 12, 24]:
+    normalize_diff_std = dict(np.load(os.path.join(root_dir, f"normalize_diff_std_{l}.npz")))
+    normalize_diff_std = np.concatenate([normalize_diff_std[v] for v in variables], axis=0)
+    out_transforms[l] = transforms.Normalize(np.zeros_like(normalize_diff_std), normalize_diff_std)
+model.set_transforms(inp_transform, out_transforms)
 
 prediction_dict = {}
 list_intervals = [6, 12, 24]
@@ -117,7 +125,8 @@ for lead_time in out_data_dict.keys():
     for interval in list_intervals:
         if lead_time % interval == 0:
             steps = lead_time // interval
-            pred = model.forward_validation(inp_data, variables, interval, steps)
+            with torch.no_grad():
+                pred = model.forward_validation(inp_data, variables, interval, steps)
             all_preds.append(pred)
     mean_pred = torch.stack(all_preds, dim=0).mean(0) # ensemble mean
     prediction_dict[lead_time] = mean_pred
