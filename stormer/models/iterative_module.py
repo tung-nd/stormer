@@ -34,9 +34,17 @@ class GlobalForecastIterativeModule(LightningModule):
         self.net = net
         
         if pretrained_path is not None:
-            state_dict = torch.load(pretrained_path, map_location='cpu')['state_dict']
-            msg = self.load_state_dict(state_dict)
-            print(msg)
+            self.load_pretrained_weights(pretrained_path)
+    
+    def load_pretrained_weights(self, pretrained_path):
+        if pretrained_path.startswith("http"):
+            checkpoint = torch.hub.load_state_dict_from_url(pretrained_path)
+        else:
+            checkpoint = torch.load(pretrained_path, map_location=torch.device("cpu"))
+        print("Loading pre-trained checkpoint from: %s" % pretrained_path)
+        state_dict = checkpoint["state_dict"]
+        msg = self.load_state_dict(state_dict)
+        print(msg)
             
     def set_base_intervals_and_lead_times(self, list_train_intervals, val_lead_times):
         # list_train_intervals: list of base intervals, e.g., [6, 12, 24]
