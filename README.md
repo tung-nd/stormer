@@ -32,7 +32,7 @@ pip install -e .
 We trained Stormer on ERA5 data from WeatherBench 2. To download WB2 data, run
 
 ```bash
-python stormer/data_processing/download_wb2.py --file [DATASET_NAME] --save_dir [SAVE_DIR]
+python stormer/data_preprocessing/download_wb2.py --file [DATASET_NAME] --save_dir [SAVE_DIR]
 ```
 in which [DATASET_NAME] refers to the specific version of ERA5 that WB2 offers, e.g., `1959-2023_01_10-6h-240x121_equiangular_with_poles_conservative.zarr`. For more detail, see [here](https://weatherbench2.readthedocs.io/en/latest/data-guide.html#era5). Note that this will download all available variables in the dataset. After downloading, the data sructure should look like the following:
 
@@ -56,7 +56,7 @@ wb2_nc/
 (Optional) If you want to regrid the data to a different resolution, e.g., 1.40625&deg;, run
 
 ```bash
-python stormer/data_processing/regrid_wb2.py \
+python stormer/data_preprocessing/regrid_wb2.py \
     --root_dir [ROOT_DIR] \
     --save_dir [SAVE_DIR] \
     --ddeg_out 1.40625 \
@@ -68,7 +68,7 @@ python stormer/data_processing/regrid_wb2.py \
 We then convert the netCDF file to H5DF format for easier data loading with Pytorch. To do this, run
 
 ```bash
-python stormer/data_processing/process_one_step_data.py \
+python stormer/data_preprocessing/process_one_step_data.py \
     --root_dir [ROOT_DIR] \
     --save_dir [SAVE_DIR] \
     --start_year [START_YEAR] \
@@ -100,7 +100,7 @@ in which each h5 file of name `{year}_{idx}.h5` contains the data for all variab
 Finally, we pre-compute the normalization constants for training Stormer. To do this, run
 
 ```bash
-python stormer/data_processing/compute_normalization.py \
+python stormer/data_preprocessing/compute_normalization.py \
     --root_dir [ROOT_DIR] \
     --save_dir [SAVE_DIR] \
     --start_year [START_YEAR] \
