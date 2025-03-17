@@ -97,7 +97,7 @@ wb2_h5df/
 
 in which each h5 file of name `{year}_{idx}.h5` contains the data for all variables of a specific time of the year. The time interval between two consecutive indices depends on the data frequence, which is 6 hours by default in WB2.
 
-Finally, we pre-compute the normalization constants for training Stormer. To do this, run
+We have provided the normalization constants pre-computed from 1979 to 2018 in [normalization_constants](https://github.com/tung-nd/stormer/tree/main/normalization_constants). If you want to compute the normalization constants using a different time period, run
 
 ```bash
 python stormer/data_preprocessing/compute_normalization.py \
